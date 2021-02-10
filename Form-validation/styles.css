@@ -54,14 +54,6 @@ body p {
     background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
 }
 
-.login .validation {
-    position: absolute;
-    z-index: 1;
-    right: 10px;
-    top: 6px;
-    opacity: 0;
-}
-
 .login_title {
     color: #afb1be;
     height: 60px;
@@ -89,7 +81,8 @@ body p {
 
 .login_fields input[type=text], 
 .login_fields input[type=password], 
-.login_fields input[type=email] {
+.login_fields input[type=email],
+.login_fields select {
     color: #afb1be;
     width: 190px;
     margin-top: -2px;
@@ -104,8 +97,14 @@ body p {
     font-family: "Gudea", sans-serif;
     box-shadow: none;
 }
+.login_fields__country select {
+    width: 320px;
+}
 
-.login_fields__user, body .login_fields__password, body .login_fields__email {
+.login_fields__user, 
+.login_fields__password,
+.login_fields__email,
+.login_fields__country {
     position: relative;
 }
 

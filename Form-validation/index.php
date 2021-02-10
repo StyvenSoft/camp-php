@@ -13,10 +13,16 @@
   <form action="index.php" method="POST" autocomplete="off">
     <?php
 
+    $username = "";
+    $password = "";
+    $email = "";
+    $country = "";
+
     if (isset($_POST['username'])) {
       $username = $_POST['username'];
       $password = $_POST['password'];
       $email = $_POST['email'];
+      $country = $_POST['country'];
 
       $campos = array();
 
@@ -30,6 +36,10 @@
 
       if ($email == "" || strpos($email, "@") === false) {
         array_push($campos, "Please enter a valid email.");
+      }
+
+      if ($country == "") {
+        array_push($campos, "Select a country");
       }
 
       if (count($campos) > 0) {
@@ -54,29 +64,32 @@
           <div class='icon'>
             <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
           </div>
-          <input placeholder='Username' type='text' name="username">
-          <div class='validation'>
-            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
-          </div>
+          <input placeholder='Username' type='text' name="username" value="<?php echo $username; ?>">
           </input>
         </div>
         <div class='login_fields__email'>
           <div class='icon'>
             <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
           </div>
-          <input placeholder='Email' type='email' name="email">
-          <div class='validation'>
-            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
-          </div>
+          <input placeholder='Email' type='email' name="email" value="<?php echo $email; ?>">
         </div>
         <div class='login_fields__password'>
           <div class='icon'>
             <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
           </div>
           <input placeholder='Password' type='password' name="password">
-          <div class='validation'>
-            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
+        </div>
+        <div class='login_fields__country'>
+          <div class='icon'>
+            <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
           </div>
+          <select name="country" id="">
+            <option value="">Select Country</option>
+            <option value="mx" <?php if($country == "mx") echo "selected" ?> >Mexico</option>
+            <option value="eu" <?php if($country == "eu") echo "selected" ?> >United State</option>
+            <option value="es" <?php if($country == "es") echo "selected" ?> >España</option>
+            <option value="ar" <?php if($country == "ar") echo "selected" ?> >Argentina</option>
+          </select>
         </div>
 
         <div class='login_fields__submit'>
