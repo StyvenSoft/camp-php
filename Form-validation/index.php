@@ -17,6 +17,7 @@
     $password = "";
     $email = "";
     $country = "";
+    $level = "";
 
     if (isset($_POST['username'])) {
       $username = $_POST['username'];
@@ -25,6 +26,12 @@
       $country = $_POST['country'];
 
       $campos = array();
+
+      if (isset($_POST['level'])) {
+        $level = $_POST['level'];
+      } else {
+        $level = "";
+      }
 
       if ($username == "") {
         array_push($campos, "The username field could not be empty");
@@ -40,6 +47,10 @@
 
       if ($country == "") {
         array_push($campos, "Select a country");
+      }
+
+      if ($level == "") {
+        array_push($campos, "Select an experience level");
       }
 
       if (count($campos) > 0) {
@@ -90,6 +101,11 @@
             <option value="es" <?php if($country == "es") echo "selected" ?> >España</option>
             <option value="ar" <?php if($country == "ar") echo "selected" ?> >Argentina</option>
           </select>
+        </div>
+        <div class='login_fields__radio'>
+          <input type='radio' name="level" value="beginner" <?php if($level == "beginner") echo "checked"; ?> > Beginner
+          <input type='radio' name="level" value="intermediate" <?php if($level == "intermediate") echo "checked"; ?> > Intermediate
+          <input type='radio' name="level" value="advance" <?php if($level == "advance") echo "checked"; ?> > Advance
         </div>
 
         <div class='login_fields__submit'>
